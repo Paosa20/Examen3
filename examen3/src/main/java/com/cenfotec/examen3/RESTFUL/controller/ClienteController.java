@@ -32,9 +32,11 @@ public class ClienteController {
     @PostMapping
     public Cliente create(@RequestBody Cliente cliente){return repository.save(cliente); }
 
-    @PutMapping
-    public ResponseEntity<Cliente> update(@PathVariable("id") long id, @RequestBody Cliente cliente){
-        return repository.findById(id).map(record -> {record.setNombre(cliente.getNombre());
+    @PutMapping(path ={"/modificar"})
+    public ResponseEntity<Cliente> update(@RequestParam("id") long id, @RequestBody Cliente cliente){ //pathvraible
+        return repository.findById(id).map(record -> {
+            record.setId(id);
+            record.setNombre(cliente.getNombre());
             record.setApellido1(cliente.getApellido1());
             record.setApellido2(cliente.getApellido2());
             record.setDireccionVivienda(cliente.getDireccionVivienda());
@@ -52,7 +54,7 @@ public class ClienteController {
     }
 
     @GetMapping(path="/dato_cliente")
-    public List<Cliente>  findByParametro(@RequestParam String dato) {
+    public List<Cliente>  findByDato(@RequestParam String dato) {
         List<Cliente> clientes = repository.findAll();
         List<Cliente> listaDatos = new ArrayList<>();
         for(Cliente cliente: clientes) {

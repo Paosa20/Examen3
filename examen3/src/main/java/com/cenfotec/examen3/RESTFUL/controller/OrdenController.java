@@ -36,8 +36,8 @@ public class OrdenController {
         return ordenesTipo;
     }
 
-    @PutMapping(value = "/cantidadItem/{id}")
-    public ResponseEntity<Orden> updateCantidad(@PathVariable("id") long id, @RequestBody Orden orden) {
+    @PutMapping(value = "/cantidadItem")
+    public ResponseEntity<Orden> updateCantidad(@RequestParam("id") long id, @RequestBody Orden orden) {
         return repository.findById(id).map(record -> {
 
             record.setCantidad(orden.getCantidad());
@@ -47,8 +47,8 @@ public class OrdenController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping(value = "/tipoItem/{id}")
-    public ResponseEntity<Orden> updateTipo(@PathVariable("id") long id, @RequestBody Orden orden) {
+    @PutMapping(value = "/tipoItem")
+    public ResponseEntity<Orden> updateTipo(@RequestParam("id") long id, @RequestBody Orden orden) {
         return repository.findById(id).map(record -> {
 
             record.setTipo(orden.getTipo());
