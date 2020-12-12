@@ -33,7 +33,7 @@ public class ClienteController {
     public Cliente create(@RequestBody Cliente cliente){return repository.save(cliente); }
 
     @PutMapping(path ={"/modificar"})
-    public ResponseEntity<Cliente> update(@RequestParam("id") long id, @RequestBody Cliente cliente){ //pathvraible
+    public ResponseEntity<Cliente> update(@RequestParam("id") int id, @RequestBody Cliente cliente){ //pathvraible
         return repository.findById(id).map(record -> {
             record.setId(id);
             record.setNombre(cliente.getNombre());
@@ -49,7 +49,7 @@ public class ClienteController {
     }
 
     @GetMapping(path ={"/{id}"})
-    public ResponseEntity<Cliente> findById(@PathVariable long id){
+    public ResponseEntity<Cliente> findById(@PathVariable int id){
         return repository.findById(id).map(record ->ResponseEntity.ok().body(record)).orElse(ResponseEntity.notFound().build());
     }
 
@@ -66,7 +66,7 @@ public class ClienteController {
     }
 
     @DeleteMapping(path ={"/{id}"})
-    public ResponseEntity<?> delete(@PathVariable("id") long id) {
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
 
         List<Orden> listaOrden = this.ordenRepository.findAll();
 

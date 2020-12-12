@@ -16,7 +16,7 @@ public class Cliente {
 
     @Id
 //    @Column(name = "id", nullable = false)
-    private long id;
+    private int id;
 
 //    @Column(name = "nombre")
     private String nombre;
@@ -42,7 +42,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(long id, String nombre, String apellido1, String apellido2, String direccionVivienda, String direccionCobro, String numeroTarjeta, String vencimiento) {
+    public Cliente(int id, String nombre, String apellido1, String apellido2, String direccionVivienda, String direccionCobro, String numeroTarjeta, String vencimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -53,11 +53,11 @@ public class Cliente {
         this.vencimiento = vencimiento;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

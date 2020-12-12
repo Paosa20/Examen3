@@ -47,7 +47,7 @@ public class OrdenController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping(value = "/tipoItem")
+    @PutMapping(value = "/tipoItem/")
     public ResponseEntity<Orden> updateTipo(@RequestParam("id") long id, @RequestBody Orden orden) {
         return repository.findById(id).map(record -> {
 
